@@ -4,16 +4,34 @@
 // https://api.openweathermap.org/data/2.5/forecast?lat=41.881832&lon=-87.623177&appid=b3116830bb7295ca81c53365dc533b51
 
 
-var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=chicago&units=imperial&appid=b3116830bb7295ca81c53365dc533b51';
+// var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=chicago&units=imperial&appid=b3116830bb7295ca81c53365dc533b51';
 
-var cityName = 'chicago';
+var btnGet = document.getElementById('btn-get')
+var inputGet = document.getElementById('input-get')
+
+console.log(btnGet);
+
+function searchResult() {
+    inputGet.innerHTML = search.value;
+}
+
+
+inputGet.addEventListener('click', searchResult);
+
+
+var cityName = '';
+cityName = 'new york';
+
+
+
+var endUrl = ('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=b3116830bb7295ca81c53365dc533b51');
+
+
+//console.log(endUrl);
+// clouds clear snow rain
 
 //cityName = 'el paso';
 
-var endUrl = ('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=b3116830bb7295ca81c53365dc533b51')
-
-
-console.log(endUrl);
 
 fetch(endUrl)
   .then(function (response) {
@@ -24,37 +42,46 @@ fetch(endUrl)
     console.log(data);
     console.log(data.city.name);
     
-    
+    //main panel showing selected city
+    document.getElementById('selected-city').innerHTML = (data.city.name + ' (' + (dayjs().format('MM/DD/YYYY')) + ')');
     //Current temp day0
-    console.log(data.list[0].main.temp)
-    console.log(data.list[0].weather[0].main)
-    console.log(data.list[0].wind.speed)
-    console.log(data.list[0].main.humidity)
+    document.getElementById('currnet-temp').innerHTML=('Temp: ' +(data.list[0].main.temp + 'ºF'));
+    document.getElementById('current-icon').innerHTML=('&#9749;' + (data.list[0].weather[0].main));
+    document.getElementById('current-wind').innerHTML=('Wind: ' + (data.list[0].wind.speed) + ' MPH');
+    document.getElementById('current-humidity').innerHTML=('Humidity: ' + (data.list[0].main.humidity) + '%');
+    
+    
+    //format('MM/DD/YYYY'));
     //Tomorrow temp day1
-    console.log(data.list[8].main.temp)
-    console.log(data.list[8].weather[0].main)
-    console.log(data.list[8].wind.speed)
-    console.log(data.list[8].main.humidity)
+    document.getElementById('day1').innerHTML = (dayjs().add(1, 'day').format('MM/DD/YYYY'));
+    document.getElementById('day1-temp').innerHTML = ('Temp: ' + (data.list[8].main.temp) + 'ºF');
+    document.getElementById('day1-icon').innerHTML =('&#9749;' + (data.list[8].weather[0].main));
+    document.getElementById('day1-wind').innerHTML = ('Wind: ' + (data.list[8].wind.speed) + ' MPH');
+    document.getElementById('day1-humidity').innerHTML = ('Humidity: ' + (data.list[8].main.humidity) + ' %');
     //day2
-    console.log(data.list[16].main.temp)
-    console.log(data.list[16].weather[0].main)
-    console.log(data.list[16].wind.speed)
-    console.log(data.list[16].main.humidity)
+    document.getElementById('day2').innerHTML = (dayjs().add(2, 'day').format('MM/DD/YYYY'));
+    document.getElementById('day2-temp').innerHTML = ('Temp: ' + (data.list[16].main.temp) + 'ºF');
+    document.getElementById('day2-icon').innerHTML = ('&#9749;' + (data.list[16].weather[0].main));
+    document.getElementById('day2-wind').innerHTML = ('Wind: ' + (data.list[16].wind.speed) + ' MPH');
+    document.getElementById('day2-humidity').innerHTML = ('Humidity: ' + (data.list[16].main.humidity) + ' %');
     //day3
-    console.log(data.list[24].main.temp)
-    console.log(data.list[24].weather[0].main)
-    console.log(data.list[24].wind.speed)
-    console.log(data.list[24].main.humidity)
+    document.getElementById('day3').innerHTML = (dayjs().add(3, 'day').format('MM/DD/YYYY'));
+    document.getElementById('day3-temp').innerHTML = ('Temp: ' + (data.list[24].main.temp) + 'ºF');
+    document.getElementById('day3-icon').innerHTML = ('&#9749;' + (data.list[24].weather[0].main));
+    document.getElementById('day3-wind').innerHTML = ('Wind: ' + (data.list[24].wind.speed)  + ' MPH');
+    document.getElementById('day3-humidity').innerHTML = ('Humidity: ' + (data.list[24].main.humidity)  + ' %');
     //day4
-    console.log(data.list[32].main.temp)
-    console.log(data.list[32].weather[0].main)
-    console.log(data.list[32].wind.speed)
-    console.log(data.list[32].main.humidity)
+    document.getElementById('day4').innerHTML = (dayjs().add(4, 'day').format('MM/DD/YYYY'));
+    document.getElementById('day4-temp').innerHTML = ('Temp: ' + (data.list[32].main.temp) + 'ºF');
+    document.getElementById('day4-icon').innerHTML = ('&#9749;' + (data.list[32].weather[0].main));
+    document.getElementById('day4-wind').innerHTML = ('Wind: ' + (data.list[32].wind.speed)  + ' MPH');
+    document.getElementById('day4-humidity').innerHTML = ('Humidity: ' + (data.list[32].main.humidity)  + ' %');
     //day5 -3 hour ran out of array
-    console.log(data.list[39].main.temp)
-    console.log(data.list[39].weather[0].main)
-    console.log(data.list[39].wind.speed)
-    console.log(data.list[39].main.humidity)
+    document.getElementById('day5').innerHTML = (dayjs().add(5, 'day').format('MM/DD/YYYY'));
+    document.getElementById('day5-temp').innerHTML = ('Temp: ' + (data.list[39].main.temp) + 'ºF');
+    document.getElementById('day5-icon').innerHTML = ('&#9749;' + (data.list[39].weather[0].main));
+    document.getElementById('day5-wind').innerHTML = ('Wind: ' + (data.list[39].wind.speed)  + ' MPH');
+    document.getElementById('day5-humidity').innerHTML = ('Humidity: ' + (data.list[39].main.humidity)  + ' %');
 
 
     // TODO: Loop through the response
@@ -70,5 +97,3 @@ fetch(endUrl)
 
   // list.0.main.temp
   // list[0].main.temp
-
-cityName = 'new york';
