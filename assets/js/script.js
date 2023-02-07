@@ -9,11 +9,13 @@ var btnGet = document.getElementById('btn-get')
 var inputGet = document.getElementById('input-get')
 var cityName = ''; 
 
-console.log(btnGet);
+//console.log(btnGet);
 
-// function searchResult() {
-//     inputGet.innerHTML = search.value;
-// }
+//for (var i = storedSearch.length -1; i > storedSearch.length-7; i--)
+
+//
+
+
 
 function searchResult() {
     console.log(inputGet.value)
@@ -21,14 +23,20 @@ function searchResult() {
     cityName = inputGet.value;
     var endUrl = ('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=b3116830bb7295ca81c53365dc533b51');
 
+    
+///local storage save to 8 buttons
+document.getElementById('btn1').innerHTML = cityName;
+
+
+//Fetch section
 fetch(endUrl)
 .then(function (response) {
     return response.json();
   })
 .then(function (data) {
-    console.log('Weather \n----------');
-    console.log(data);
-    console.log(data.city.name);
+    //console.log('Weather \n----------');
+    //console.log(data);
+    //console.log(data.city.name);
 
 function weatherIconMain() {
     //for (var i = storedSearch.length -1; i > storedSearch.length-7; i--)
