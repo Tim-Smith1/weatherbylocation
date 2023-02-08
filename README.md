@@ -5,6 +5,8 @@ Weather by location is a app that allows you to enter a city and get the current
 We are still working on getting the history buttons to be searchable. Please stay tuned for our next update. 
 
 https://tim-smith1.github.io/weatherbylocation/
+
+
 git@github.com:Tim-Smith1/weatherbylocation.git
 
 
